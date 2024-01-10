@@ -1,0 +1,68 @@
+{
+  "pots": [
+    { "id": 1,
+      "img": "./src/assets/pot1.jpg",
+      "category" : "Clay" , 
+      "color" : ["Brown"]  ,
+      "type" : "Regular", 
+      "price" : 190 
+    },
+
+    { "id": 2,
+      "img": "./src/assets/pot2.jpg",
+      "category" : "Clay" , 
+      "color" : ["Brown"] ,
+      "type" : "Fency",
+      "price" : 220 
+    },
+
+    { "id": 3,
+      "img": "./src/assets/pot3.jpg",
+      "category" : "Ceramic" , 
+      "color" : ["White", "Cyan" , "Yellow"] ,
+      "type" : "Fency" ,
+      "price" : 350 
+    },
+
+    { "id": 4,
+      "img": "./src/assets/pot4.jpg",
+      "category" : "Ceramic" , 
+      "color" : ["Pink", "Green" , "White"] ,
+      "type" : "Fency" ,
+      "price" : 500
+    },
+
+    { "id": 5,
+      "img": "./src/assets/pot5.jpg",
+      "category" : "Clay" , 
+      "color" : ["Red", "Yellow" , "Lime"] ,
+      "type" : "Fency" ,
+      "price" : 220
+    },
+
+    { "id": 6,
+      "img": "./src/assets/pot6.jpg",
+      "category" : "Ceramic" , 
+      "color" : ["Red", "Blue"] ,
+      "type" : "Fency" ,
+      "price" : 400
+    },
+    
+    { "id": 7,
+      "img": "./src/assets/pot7.jpg",
+      "category" : "Ceramic" , 
+      "color" : ["Pink", "Cyan"] ,
+      "type" : "Fency" ,
+      "price" : 550
+    },
+    
+    { "id": 8,
+      "img": "./src/assets/pot8.jpg",
+      "category" : "Plastic Fiber" , 
+      "color" : ["Any"] ,
+      "type" : "Fency (hand-made)" ,
+      "price" : 220
+    }
+    
+    ]
+}
