@@ -5,16 +5,73 @@ import {
   TextField,
   Button,
   Link,
-  Checkbox,
-  FormControlLabel,
 } from "@mui/material";
 import LockIcon from "@mui/icons-material/Lock";
-import Alert from "@mui/material/Alert";
+import Message from "./Messages";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-
+import { useState } from "react";
+import axios from "axios";
 const theme = createTheme();
 
 const SignUp = () => {
+  const [fname, setfname] = useState("");
+  const [lname, setlname] = useState("");
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
+  const [errors, seterrors] = useState({
+    fname: "",
+    lname: "",
+    email: "",
+    password: "",
+  });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const errors = validation();
+    seterrors(errors);
+      try {
+        const response = await axios.post("http://localhost:3000/api/signup", {
+          firstName : fname,
+          lastName: lname,
+          email: email,
+          password : password,
+        });
+
+        console.log(response.data);
+      } catch (error) {
+        console.log(error.response.data);
+    }
+  };
+  const validation = () => {
+    const error = {};
+    if (!fname || fname == "") {
+      error.fname = "First name can't be blank";
+    } else {
+      error.fname = "";
+    }
+    if (!lname || lname == "") {
+      error.lname = "Last name can't be blank";
+    } else {
+      error.lname = "";
+    }
+
+    if (!email || email == "") {
+      error.email = "Enter email address";
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      error.email = "Please enter a valid email";
+    } else {
+      error.email = "";
+    }
+
+    if (!password || password == "") {
+      error.password = "Please enter a password";
+    } else if (password.length <= 6) {
+      error.password = "Password must be at least 7 characters";
+    } else {
+      error.password = "";
+    }
+    return error;
+  };
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -36,19 +93,48 @@ const SignUp = () => {
               width: "400px",
             }}
           >
-            <LockIcon style={{ fontSize: "48px", color: "#007bff" }} />
-            <Typography component="h2" variant="h5" mt={4}>
-              Sign Up
-            </Typography>
-            <Alert severity="error" mt={2}>
-              Sign up error message goes here.
-            </Alert>
-            <div style={{ marginTop: "20px" }}>
-              <form>
+            <div
+              style={{
+                justifyContent: "center",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <LockIcon style={{ fontSize: "48px", color: "#007bff" }} />
+            </div>
+            <div
+              style={{
+                justifyContent: "center",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <Typography component="h2" variant="h5">
+                Sign Up
+              </Typography>
+            </div>
+
+            {errors.fname ? (
+              <Message msg={errors.fname} msg_type="error" />
+            ) : errors.lname ? (
+              <Message msg={errors.lname} msg_type="error" />
+            ) : errors.email ? (
+              <Message msg={errors.email} msg_type="error" />
+            ) : errors.password ? (
+              <Message msg={errors.password} msg_type="error" />
+            ) : (
+              ""
+            )}
+            <div style={{ marginTop: "5px" }}>
+              <form method="post" onSubmit={handleSubmit}>
                 <TextField
+                  onChange={(e) => {
+                    setfname(e.target.value);
+                  }}
+                  size="small"
                   variant="outlined"
                   margin="normal"
-                  required
+                  seterror
                   fullWidth
                   id="firstName"
                   label="First Name"
@@ -57,9 +143,13 @@ const SignUp = () => {
                   autoFocus
                 />
                 <TextField
+                  onChange={(e) => {
+                    setlname(e.target.value);
+                  }}
+                  size="small"
                   variant="outlined"
                   margin="normal"
-                  required
+                  seterror
                   fullWidth
                   id="lastName"
                   label="Last Name"
@@ -67,9 +157,13 @@ const SignUp = () => {
                   autoComplete="lname"
                 />
                 <TextField
+                  onChange={(e) => {
+                    setemail(e.target.value);
+                  }}
+                  size="small"
                   variant="outlined"
                   margin="normal"
-                  required
+                  seterror
                   fullWidth
                   id="email"
                   label="Email Address"
@@ -77,9 +171,13 @@ const SignUp = () => {
                   autoComplete="email"
                 />
                 <TextField
+                  onChange={(e) => {
+                    setpassword(e.target.value);
+                  }}
+                  size="small"
                   variant="outlined"
                   margin="normal"
-                  required
+                  seterror
                   fullWidth
                   name="password"
                   label="Password"
@@ -87,26 +185,32 @@ const SignUp = () => {
                   id="password"
                   autoComplete="current-password"
                 />
-                <FormControlLabel
+                {/* <FormControlLabel
                   control={<Checkbox value="receiveUpdates" color="primary" />}
                   label="I want to receive inspiration, marketing promotions, and updates via email."
                   className="mb-3"
-                />
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  color="primary"
-                  mt={2}
+                /> */}
+                <div
+                  style={{
+                    display: "flex",
+                    marginTop: "12px",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
                 >
-                  Sign Up
-                </Button>
+                  <Button
+                    style={{ width: "120px" }}
+                    type="submit"
+                    variant="contained"
+                    color="primary"
+                    mt={2}
+                  >
+                    Sign Up
+                  </Button>
+                </div>
               </form>
               <Typography variant="body2" mt={3}>
-                Already have an account? <Link href="#">Sign in</Link>
-              </Typography>
-              <Typography variant="body2" mt={2}>
-                Copyright © Your Website 2024
+                Already have an account? <Link href="/signin">Sign in</Link>
               </Typography>
             </div>
           </div>
