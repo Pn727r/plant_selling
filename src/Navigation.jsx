@@ -1,14 +1,15 @@
 import { Outlet, Link } from "react-router-dom";
 import Button from "@mui/material/Button";
+import { NavDropdown } from 'react-bootstrap';
+import logo from "./assets/logo.png";
+//we can add bootstrp class in react as  this command --> npm install react-bootstrap bootstrap
 
 const Navigation = () => {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container">
-          <Link className="navbar-brand" to="/">
-            Gardening
-          </Link>
+          <img src={logo} alt="logo" style={{height : "40px" , width : "40px"}}/>
           <div className="collapse navbar-collapse">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
@@ -21,21 +22,17 @@ const Navigation = () => {
                   Plants
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/pots">
-                  Pots/Decoration
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/soil">
-                  Soil
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/util">
-                  Utilities
-                </Link>
-              </li>
+              <NavDropdown title="Many More" id="basic-nav-dropdown">
+                <NavDropdown.Item as={Link} to="/pots">
+                  Pots/Planters
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/soil">
+                  Soil/Fertilizers
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/util">
+                  Garden Equipments
+                </NavDropdown.Item>
+              </NavDropdown>
               <li className="nav-item">
                 <Link className="nav-link" to="/business">
                   Business
