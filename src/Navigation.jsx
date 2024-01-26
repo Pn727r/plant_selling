@@ -2,7 +2,6 @@ import { Outlet, Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import { NavDropdown } from "react-bootstrap";
 import logo from "./assets/logo.png";
-import { useState } from "react";
 import Profile from '@mui/icons-material/AccountCircleRounded';
 
 const Navigation = () => {
@@ -55,7 +54,7 @@ const Navigation = () => {
             <>
             <div style = {{alignItems: "center"}}>
             <Profile fontSize="large" style={{marginRight:5}}/>
-            {localStorage.getItem("email") }
+            {Email}
 
             </div>
             <Button className="mx-3 " variant="outlined" style={{ backgroundColor: '#93ff82' , color: "#000000" , borderColor: "#000000" ,borderRadius: '20px'}} 
