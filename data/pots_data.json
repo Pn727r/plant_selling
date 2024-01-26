@@ -1,5 +1,4 @@
-{
-  "pots": [
+ [
     { "id": 1,
       "img": "./src/assets/pot1.jpg",
       "category" : "Clay" , 
@@ -64,5 +63,4 @@
       "price" : 220
     }
     
-    ]
-}
+]

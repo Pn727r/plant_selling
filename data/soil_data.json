@@ -1,5 +1,4 @@
-{
-    "soil" : [
+[
             {
               "id": 1,
               "soil_name": "Loamy Soil",
@@ -82,4 +81,3 @@
             }
           
     ]
-}
