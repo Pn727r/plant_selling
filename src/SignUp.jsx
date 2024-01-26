@@ -9,8 +9,9 @@ import {
 import LockIcon from "@mui/icons-material/Lock";
 import Message from "./Messages";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { useState } from "react";
+import { useState  } from "react";
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 const theme = createTheme();
 
 const SignUp = () => {
@@ -24,23 +25,24 @@ const SignUp = () => {
     email: "",
     password: "",
   });
-
+  const history  = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     const errors = validation();
     seterrors(errors);
-      try {
-        const response = await axios.post("http://localhost:3000/api/signup", {
-          firstName : fname,
-          lastName: lname,
-          email: email,
-          password : password,
-        });
-
-        console.log(response.data);
-      } catch (error) {
-        console.log(error.response.data);
-    }
+    await axios
+      .post("http://localhost:3000/signup", {
+        fname,
+        lname,
+        email,
+        password,
+      })
+      .then(res => {
+        if(res.data == "Exist"){
+          history("/signin");
+        }
+        
+      });
   };
   const validation = () => {
     const error = {};

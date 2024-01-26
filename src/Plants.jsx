@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import flowersData from "../data/flower_data.json";
+import { useState , useEffect } from 'react';
+import axios from "axios";
+// import flowersData from "../data/flower_data.json";
 import { Card, CardContent, CardMedia, IconButton, Typography, Button, Box, Grid } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
@@ -7,8 +8,19 @@ import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutl
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import {yellow } from "@mui/material/colors";
 
+
 const FlowerList = () => {
-  const [purchaseQuantities, setPurchaseQuantities] = useState(flowersData.flowers.map(() => 0));
+  const [flowersData, setflowersData] = useState([]);
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+
+  useEffect(()=>{
+    axios.get("http://localhost:3000/plants")
+    .then(result => setflowersData(result.data))
+    .catch(error => console.error("Error gettting data : ", error));
+  } , [])
+  
+  const [purchaseQuantities, setPurchaseQuantities] = useState(0);
 
   const incrementPurchase = (index) => {
     setPurchaseQuantities(prevQuantities => {
@@ -31,10 +43,10 @@ const FlowerList = () => {
   return (
     <div className='container my-3'>
       <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 16 }}>
-        {flowersData.flowers.map((flower, index) => (
+        {flowersData.map((flower, index) => (
           <Grid item xs={2} sm={4} md={4} key={index}>
             <Card sx={{ maxWidth: 300, marginBottom: 2 }}>
-              <CardMedia component="img" height="180" image={flower.img} alt={flower.name} />
+              <CardMedia component="img" height="200" image={flower.img} alt={flower.name} />
               <CardContent>
                 <Typography  variant="h6">{flower.name}</Typography>
                 <Typography py={0.5} variant="body2" color="text.secondary">

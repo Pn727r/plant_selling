@@ -11,18 +11,37 @@ import LockIcon from "@mui/icons-material/Lock";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import {  useState } from "react";
 import Message from "./Messages";
+import axios from "axios" ;
+import { useNavigate } from "react-router-dom";
 const theme = createTheme();
 
 const SignIn = () => {
+  const history  = useNavigate();
   const [email, setemail] = useState("");
   const [password , setpass] = useState("");
   const [errors , seterror] = useState({email : "" , password : ""});
 
-  const handleSubmit = (e) =>{
+  const handleSubmit = async (e) =>{
     e.preventDefault();
     const errors = validation();
     seterror(errors);
-    
+    await axios
+      .post("http://localhost:3000/signin", {
+        email,
+        password,
+      })
+      .then(res => {
+        if(res.data == "Exist"){
+          localStorage.setItem("email", email);
+          history("/" );
+           window.location.reload() 
+
+        }
+        else{
+          history("/signup");
+        }
+        
+      });
   }
 
   const validation = ()=>{
@@ -145,7 +164,7 @@ const SignIn = () => {
                 </div>
               </form>
               <Typography variant="body2" mt={3}>
-                Dont have an account? <Link href="/signup">Sign up</Link>
+                Don{"'"}t have an account? <Link href="/signup">Sign up</Link>
               </Typography>
               
             </div>
