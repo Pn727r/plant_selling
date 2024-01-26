@@ -28,28 +28,28 @@
     "img": "./src/assets/daisy.jpg"
   },
   {
-    "id": 6,
+    "id": 5,
     "name": "Orchid",
     "care": "Grow in well-draining orchid mix. Water sparingly. Provide bright, indirect light.",
     "price": 250,
     "img": "./src/assets/orchid.jpg"
   },
   {
-    "id": 7,
+    "id": 6,
     "name": "Carnation",
     "care": "Plant in well-drained soil. Water regularly. Prefers full to partial sun.",
     "price": 110,
     "img": "./src/assets/carnation.jpg"
   },
   {
-    "id": 8,
+    "id": 7,
     "name": "Daffodil",
     "care": "Plant in well-drained soil. Water moderately. Requires partial to full sun.",
     "price": 140,
     "img": "./src/assets/daffodil.jpg"
   },
   {
-    "id": 9,
+    "id": 8,
     "name": "Sunflower",
     "care": "Plant in well-drained soil. Water moderately. Requires partial to full sun.",
     "price": 125,
