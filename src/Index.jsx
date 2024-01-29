@@ -9,7 +9,8 @@ import Util from "./Utilities.jsx" ;
 import Business from "./Business.jsx" ;
 import SignUp from "./SignUp.jsx" ;
 import SignIn from "./SignIn.jsx" ;
-
+import MyCart from './Cart.jsx';
+import MyFav from "./Fav.jsx";
 export default function App() {
   return (
     <BrowserRouter>
@@ -24,6 +25,8 @@ export default function App() {
           <Route path="/business" element={<Business />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signin" element={<SignIn />} />
+          <Route path="/cart" element={<MyCart />}/>
+          <Route path="/favorite" element={<MyFav />}/>
 
         </Route>
       </Routes>
