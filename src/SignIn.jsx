@@ -9,19 +9,19 @@ import {
 } from "@mui/material";
 import LockIcon from "@mui/icons-material/Lock";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import {  useState } from "react";
+import { useState } from "react";
 import Message from "./Messages";
-import axios from "axios" ;
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 const theme = createTheme();
 
 const SignIn = () => {
-  const history  = useNavigate();
+  const history = useNavigate();
   const [email, setemail] = useState("");
-  const [password , setpass] = useState("");
-  const [errors , seterror] = useState({email : "" , password : ""});
+  const [password, setpass] = useState("");
+  const [errors, seterror] = useState({ email: "", password: "" });
 
-  const handleSubmit = async (e) =>{
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const errors = validation();
     seterror(errors);
@@ -30,43 +30,36 @@ const SignIn = () => {
         email,
         password,
       })
-      .then(res => {
-        if(res.data == "Exist"){
-          localStorage.setItem("email", email);
-          history("/" );
-           window.location.reload() 
-
-        }
-        else{
+      .then((res) => {
+        if (res.data == "Exist") {
+          window.localStorage.setItem("email", email);
+          history("/");
+          window.location.reload();
+        } else {
           history("/signup");
         }
-        
       });
-  }
+  };
 
-  const validation = ()=>{
+  const validation = () => {
     const error = {};
-    if(!email || email == ""){
+    if (!email || email == "") {
       error.email = "Email is required";
-    }
-    else if(!/\S+@\S+\.\S+/.test(email)){
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
       error.email = "Please enter a valid email";
-    }
-    else {
-      error.email = "" ;
+    } else {
+      error.email = "";
     }
 
-    if(!password || password == ""){
+    if (!password || password == "") {
       error.password = "Please enter a password";
-    }
-    else if (password.length <= 6){
+    } else if (password.length <= 6) {
       error.password = "Password must be at least 7 characters";
+    } else {
+      error.password = "";
     }
-    else {
-      error.password = "" ;
-    }
-    return error ; 
-  }
+    return error;
+  };
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -104,24 +97,25 @@ const SignIn = () => {
                 alignItems: "center",
               }}
             >
-            <Typography
-              component="h2"
-              variant="h5"
-            >
-              Sign In
-            </Typography>
+              <Typography component="h2" variant="h5">
+                Sign In
+              </Typography>
             </div>
-            
-            {errors.email  ?   
-            <Message msg={errors.email}  msg_type="error" />  
-            : errors.password  ? <Message msg = {errors.password} msg_type="error" /> 
-            : "" 
-            }
+
+            {errors.email ? (
+              <Message msg={errors.email} msg_type="error" />
+            ) : errors.password ? (
+              <Message msg={errors.password} msg_type="error" />
+            ) : (
+              ""
+            )}
 
             <div style={{ marginTop: "5px" }}>
-              <form  action="post" onSubmit={handleSubmit}>
+              <form action="post" onSubmit={handleSubmit}>
                 <TextField
-                onChange={(e)=>{setemail(e.target.value) } }
+                  onChange={(e) => {
+                    setemail(e.target.value);
+                  }}
                   size="small"
                   variant="outlined"
                   margin="normal"
@@ -133,7 +127,9 @@ const SignIn = () => {
                   autoFocus
                 />
                 <TextField
-                onChange={(e)=>{setpass(e.target.value) }}
+                  onChange={(e) => {
+                    setpass(e.target.value);
+                  }}
                   size="small"
                   variant="outlined"
                   margin="normal"
@@ -166,7 +162,6 @@ const SignIn = () => {
               <Typography variant="body2" mt={3}>
                 Don{"'"}t have an account? <Link href="/signup">Sign up</Link>
               </Typography>
-              
             </div>
           </div>
         </div>

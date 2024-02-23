@@ -3,12 +3,16 @@ import Button from "@mui/material/Button";
 import { NavDropdown } from "react-bootstrap";
 import logo from "./assets/logo.png";
 import Profile from "@mui/icons-material/AccountCircleRounded";
-// import Cart from '@mui/icons-material/AddShoppingCart';
 import Fav from '@mui/icons-material/Favorite';
-import Cart_com from "./Cart_com";
+import {useAppContext} from './AppContext';
+import {getEmail } from "./Global";
+import Cart from '@mui/icons-material/AddShoppingCart';
+
+const email = getEmail();
+
 
 const Navigation = () => {
-  const Email = localStorage.getItem("email");
+  const {cart_count} = useAppContext();
   return (
     <>
       <nav
@@ -44,7 +48,7 @@ const Navigation = () => {
                   Garden Equipments
                 </NavDropdown.Item>
               </NavDropdown>
-              {localStorage.getItem("email") != null ? (
+              {email != null ? (
                 <>
                   <li className="nav-item">
                     <Link className="nav-link" to="/business">
@@ -52,14 +56,13 @@ const Navigation = () => {
                     </Link>
                   </li>
 
-                  {/* <li className="nav-item">
+                  <li className="nav-item">
                     <Link className="nav-link" to="/cart">
                         <Cart/>
-                        {localStorage.getItem("cart_len") != null ? localStorage.getItem("cart_len") : 0 }
+                  {cart_count}
                     </Link>
-                  </li> */}
+                  </li>
 
-                  <Cart_com/>
                   <li className="nav-item">
                     <Link className="nav-link" to="/favorite">
                         <Fav/>
@@ -76,11 +79,11 @@ const Navigation = () => {
         <div
           style={{ display: "flex", justifyContent: "flex-end", width: "100%" }}
         >
-          {localStorage.getItem("email") != null ? (
+          {email != null ? (
             <>
               <div style={{ alignItems: "center" }}>
                 <Profile fontSize="large" style={{ marginRight: 5 }} />
-                {Email}
+                {email}
               </div>
               <Button
                 className="mx-3 "

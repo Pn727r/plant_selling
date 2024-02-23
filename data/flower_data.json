@@ -1,55 +1,55 @@
 [
   {
-    "id": 1,
+    "id": "flower1",
     "name": "Rose",
     "care": "Requires full sun, well-drained soil. Water regularly. Prune to encourage blooming.",
     "price": 150,
     "img": "./src/assets/rose.jpg"
   },
   {
-    "id": 2,
+    "id": "flower2",
     "name": "Tulip",
     "care": "Plant in well-drained soil. Water moderately. Provide full sun to partial shade.",
     "price": 120,
     "img": "./src/assets/tulip.jpg"
   },
   {
-    "id": 3,
+    "id": "flower3",
     "name": "Lily",
     "care": "Plant in rich, well-drained soil. Water generously. Prefers partial to full sun.",
     "price": 180,
     "img": "./src/assets/lily.jpg"
   },
   {
-    "id": 4,
+    "id": "flower4",
     "name": "Daisy",
     "care": "Thrives in well-drained soil. Water regularly. Prefers full sun.",
     "price": 100,
     "img": "./src/assets/daisy.jpg"
   },
   {
-    "id": 5,
+    "id": "flower5",
     "name": "Orchid",
     "care": "Grow in well-draining orchid mix. Water sparingly. Provide bright, indirect light.",
     "price": 250,
     "img": "./src/assets/orchid.jpg"
   },
   {
-    "id": 6,
+    "id": "flower6",
     "name": "Carnation",
     "care": "Plant in well-drained soil. Water regularly. Prefers full to partial sun.",
     "price": 110,
     "img": "./src/assets/carnation.jpg"
   },
   {
-    "id": 7,
+    "id": "flower7",
     "name": "Daffodil",
     "care": "Plant in well-drained soil. Water moderately. Requires partial to full sun.",
     "price": 140,
     "img": "./src/assets/daffodil.jpg"
   },
   {
-    "id": 8,
+    "id": "flower8",
     "name": "Sunflower",
     "care": "Plant in well-drained soil. Water moderately. Requires partial to full sun.",
     "price": 125,

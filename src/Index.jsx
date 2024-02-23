@@ -11,8 +11,11 @@ import SignUp from "./SignUp.jsx" ;
 import SignIn from "./SignIn.jsx" ;
 import MyCart from './Cart.jsx';
 import MyFav from "./Fav.jsx";
+import { AppProvider } from './AppContext';
+
 export default function App() {
   return (
+    <AppProvider>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Navigation />}>
@@ -31,6 +34,8 @@ export default function App() {
         </Route>
       </Routes>
     </BrowserRouter>
+    </AppProvider>
+
   );
 }
 

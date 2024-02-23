@@ -1,83 +1,82 @@
 [
-            {
-              "id": 1,
-              "soil_name": "Loamy Soil",
-              "soil_type": "Silt Loam",
-              "description": "Loamy soil is a well-balanced soil type composed of sand, silt, and clay.",
-              "characteristics": "Good drainage, fertility, and moisture retention.",
-              "good_for": "Versatile, suitable for a wide range of crops.",
-              "price": 50,
-              "img": "./src/assets/f1.jpg"
-            },
-            {
-              "id": 2,
-              "soil_name": "Sandy Soil",
-              "soil_type": "Coarse Sand",
-              "description": "Sandy soil is composed of larger particles, providing excellent drainage.",
-              "characteristics": "Poor fertility, rapid drainage, low moisture retention.",
-              "good_for": "Suitable for drought-tolerant crops.",
-              "price": 90,
-              "img": "./src/assets/f2.jpg"
-            },
-            {
-              "id": 3,
-              "soil_name": "Clayey Soil",
-              "soil_type": "Heavy Clay",
-              "description": "Clayey soil has fine particles, offering good nutrient retention.",
-              "characteristics": "Poor drainage, high fertility, compact structure.",
-              "good_for": "Ideal for water-loving crops.",
-              "price": 45,
-              "img": "./src/assets/f3.jpg"
-            },
-            {
-              "id": 4,
-              "soil_name": "Peaty Soil",
-              "soil_type": "Sphagnum Peat",
-              "description": "Peaty soil is rich in organic matter, with decomposed plant material.",
-              "characteristics": "High acidity, excellent moisture retention.",
-              "good_for": "Suitable for acid-loving plants like blueberries.",
-              "price": 45,
-              "img": "./src/assets/f4.jpg"
-            },
-            {
-              "id": 5,
-              "soil_name": "Chalky Soil",
-              "soil_type": "Lime Chalk",
-              "description": "Chalky soil is alkaline and often contains fragments of limestone.",
-              "characteristics": "Good drainage, poor nutrient retention.",
-              "good_for": "Suitable for plants that prefer alkaline conditions.",
-              "price": 55,
-              "img": "./src/assets/f5.jpg"
-            },
-            {
-              "id": 6,
-              "soil_name": "Silica Soil",
-              "soil_type": "Sandy Silica",
-              "description": "Silica soil is high in silica content, offering good drainage.",
-              "characteristics": "Low fertility, excellent drainage.",
-              "good_for": "Suitable for succulent plants.",
-              "price": 80,
-              "img": "./src/assets/f6.jpg"
-            },
-            {
-              "id": 7,
-              "soil_name": "Black Soil",
-              "soil_type": "Black Clay",
-              "description": "Black soil is rich in organic matter and minerals, with a dark color.",
-              "characteristics": "Good fertility, moisture retention.",
-              "good_for": "Ideal for a variety of crops.",
-              "price": 28,
-              "img": "./src/assets/f7.jpg"
-            },
-            {
-              "id": 8,
-              "soil_name": "Saline Soil",
-              "soil_type": "Salt Pan",
-              "description": "Saline soil contains high levels of salt, affecting plant growth.",
-              "characteristics": "Poor fertility, limited crop suitability.",
-              "good_for": "Suitable for salt-tolerant plants.",
-              "price": 49,
-              "img": "./src/assets/f8.jpg"
-            }
-          
-    ]
+  {
+      "id": "soil1",
+      "soil_name": "Loamy Soil",
+      "soil_type": "Silt Loam",
+      "description": "Loamy soil is a well-balanced soil type composed of sand, silt, and clay.",
+      "characteristics": "Good drainage, fertility, and moisture retention.",
+      "good_for": "Versatile, suitable for a wide range of crops.",
+      "price": 50,
+      "img": "./src/assets/f1.jpg"
+  },
+  {
+      "id": "soil2",
+      "soil_name": "Sandy Soil",
+      "soil_type": "Coarse Sand",
+      "description": "Sandy soil is composed of larger particles, providing excellent drainage.",
+      "characteristics": "Poor fertility, rapid drainage, low moisture retention.",
+      "good_for": "Suitable for drought-tolerant crops.",
+      "price": 90,
+      "img": "./src/assets/f2.jpg"
+  },
+  {
+      "id": "soil3",
+      "soil_name": "Clayey Soil",
+      "soil_type": "Heavy Clay",
+      "description": "Clayey soil has fine particles, offering good nutrient retention.",
+      "characteristics": "Poor drainage, high fertility, compact structure.",
+      "good_for": "Ideal for water-loving crops.",
+      "price": 45,
+      "img": "./src/assets/f3.jpg"
+  },
+  {
+      "id": "soil4",
+      "soil_name": "Peaty Soil",
+      "soil_type": "Sphagnum Peat",
+      "description": "Peaty soil is rich in organic matter, with decomposed plant material.",
+      "characteristics": "High acidity, excellent moisture retention.",
+      "good_for": "Suitable for acid-loving plants like blueberries.",
+      "price": 45,
+      "img": "./src/assets/f4.jpg"
+  },
+  {
+      "id": "soil5",
+      "soil_name": "Chalky Soil",
+      "soil_type": "Lime Chalk",
+      "description": "Chalky soil is alkaline and often contains fragments of limestone.",
+      "characteristics": "Good drainage, poor nutrient retention.",
+      "good_for": "Suitable for plants that prefer alkaline conditions.",
+      "price": 55,
+      "img": "./src/assets/f5.jpg"
+  },
+  {
+      "id": "soil6",
+      "soil_name": "Silica Soil",
+      "soil_type": "Sandy Silica",
+      "description": "Silica soil is high in silica content, offering good drainage.",
+      "characteristics": "Low fertility, excellent drainage.",
+      "good_for": "Suitable for succulent plants.",
+      "price": 80,
+      "img": "./src/assets/f6.jpg"
+  },
+  {
+      "id": "soil7",
+      "soil_name": "Black Soil",
+      "soil_type": "Black Clay",
+      "description": "Black soil is rich in organic matter and minerals, with a dark color.",
+      "characteristics": "Good fertility, moisture retention.",
+      "good_for": "Ideal for a variety of crops.",
+      "price": 28,
+      "img": "./src/assets/f7.jpg"
+  },
+  {
+      "id": "soil8",
+      "soil_name": "Saline Soil",
+      "soil_type": "Salt Pan",
+      "description": "Saline soil contains high levels of salt, affecting plant growth.",
+      "characteristics": "Poor fertility, limited crop suitability.",
+      "good_for": "Suitable for salt-tolerant plants.",
+      "price": 49,
+      "img": "./src/assets/f8.jpg"
+  }
+]

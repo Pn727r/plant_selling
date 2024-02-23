@@ -3,9 +3,13 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const corrs = require("cors");
 const connectDb = require('./db_connection');
+
 const app = express();
+
 const User = require('./user-model');
 const Plant = require("./plant-model");
+const Pot = require("./pot-model");
+
 app.use(bodyParser.json());
 app.use(corrs());
 
@@ -58,6 +62,17 @@ app.get("/plants" ,  (req ,res) =>{
     })
     .catch((err) => {console.log(err)})
 })
+
+// pots
+app.get("/pots" , (req , res)=>{
+  Pot.find()
+  .then((result)=>{
+    res.send(result);
+  }).catch((err) =>{console.log(err)})
+})
+
+
+
 
 
 const PORT = 3000;

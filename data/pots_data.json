@@ -1,66 +1,65 @@
- [
-    { "id": 1,
-      "img": "./src/assets/pot1.jpg",
-      "category" : "Clay" , 
-      "color" : ["Brown"]  ,
-      "type" : "Classic", 
-      "price" : 190 
-    },
+[
+  { "id": "pots1",
+    "img": "./src/assets/pot1.jpg",
+    "category" : "Clay" , 
+    "color" : ["Brown"]  ,
+    "type" : "Classic", 
+    "price" : 190 
+  },
 
-    { "id": 2,
-      "img": "./src/assets/pot2.jpg",
-      "category" : "Clay" , 
-      "color" : ["Brown"] ,
-      "type" : "Decorative",
-      "price" : 220 
-    },
+  { "id": "pots2",
+    "img": "./src/assets/pot2.jpg",
+    "category" : "Clay" , 
+    "color" : ["Brown"] ,
+    "type" : "Decorative",
+    "price" : 220 
+  },
 
-    { "id": 3,
-      "img": "./src/assets/pot3.jpg",
-      "category" : "Ceramic" , 
-      "color" : ["White", "Cyan" , "Yellow"] ,
-      "type" : "Decorative" ,
-      "price" : 350 
-    },
+  { "id": "pots3",
+    "img": "./src/assets/pot3.jpg",
+    "category" : "Ceramic" , 
+    "color" : ["White", "Cyan" , "Yellow"] ,
+    "type" : "Decorative" ,
+    "price" : 350 
+  },
 
-    { "id": 4,
-      "img": "./src/assets/pot4.jpg",
-      "category" : "Ceramic" , 
-      "color" : ["Pink", "Green" , "White"] ,
-      "type" : "Decorative" ,
-      "price" : 500
-    },
+  { "id": "pots4",
+    "img": "./src/assets/pot4.jpg",
+    "category" : "Ceramic" , 
+    "color" : ["Pink", "Green" , "White"] ,
+    "type" : "Decorative" ,
+    "price" : 500
+  },
 
-    { "id": 5,
-      "img": "./src/assets/pot5.jpg",
-      "category" : "Clay" , 
-      "color" : ["Red", "Yellow" , "Lime"] ,
-      "type" : "Decorative" ,
-      "price" : 220
-    },
+  { "id": "pots5",
+    "img": "./src/assets/pot5.jpg",
+    "category" : "Clay" , 
+    "color" : ["Red", "Yellow" , "Lime"] ,
+    "type" : "Decorative" ,
+    "price" : 220
+  },
 
-    { "id": 6,
-      "img": "./src/assets/pot6.jpg",
-      "category" : "Ceramic" , 
-      "color" : ["Red", "Blue"] ,
-      "type" : "Decorative" ,
-      "price" : 400
-    },
-    
-    { "id": 7,
-      "img": "./src/assets/pot7.jpg",
-      "category" : "Ceramic" , 
-      "color" : ["Pink", "Cyan"] ,
-      "type" : "Decorative" ,
-      "price" : 550
-    },
-    
-    { "id": 8,
-      "img": "./src/assets/pot8.jpg",
-      "category" : "Plastic Fiber" , 
-      "color" : ["Any"] ,
-      "type" : "Hand Made" ,
-      "price" : 220
-    }
-    
+  { "id": "pots6",
+    "img": "./src/assets/pot6.jpg",
+    "category" : "Ceramic" , 
+    "color" : ["Red", "Blue"] ,
+    "type" : "Decorative" ,
+    "price" : 400
+  },
+  
+  { "id": "pots7",
+    "img": "./src/assets/pot7.jpg",
+    "category" : "Ceramic" , 
+    "color" : ["Pink", "Cyan"] ,
+    "type" : "Decorative" ,
+    "price" : 550
+  },
+  
+  { "id": "pots8",
+    "img": "./src/assets/pot8.jpg",
+    "category" : "Plastic Fiber" , 
+    "color" : ["Any"] ,
+    "type" : "Hand Made" ,
+    "price" : 220
+  }
 ]
