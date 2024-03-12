@@ -1,5 +1,6 @@
+
 [
-  {
+    {
       "id": "soil1",
       "soil_name": "Loamy Soil",
       "soil_type": "Silt Loam",
@@ -7,9 +8,10 @@
       "characteristics": "Good drainage, fertility, and moisture retention.",
       "good_for": "Versatile, suitable for a wide range of crops.",
       "price": 50,
-      "img": "./src/assets/f1.jpg"
-  },
-  {
+      "img": "./src/assets/f1.jpg",
+      "qty": 14
+    },
+    {
       "id": "soil2",
       "soil_name": "Sandy Soil",
       "soil_type": "Coarse Sand",
@@ -17,9 +19,10 @@
       "characteristics": "Poor fertility, rapid drainage, low moisture retention.",
       "good_for": "Suitable for drought-tolerant crops.",
       "price": 90,
-      "img": "./src/assets/f2.jpg"
-  },
-  {
+      "img": "./src/assets/f2.jpg",
+      "qty": 8
+    },
+    {
       "id": "soil3",
       "soil_name": "Clayey Soil",
       "soil_type": "Heavy Clay",
@@ -27,9 +30,10 @@
       "characteristics": "Poor drainage, high fertility, compact structure.",
       "good_for": "Ideal for water-loving crops.",
       "price": 45,
-      "img": "./src/assets/f3.jpg"
-  },
-  {
+      "img": "./src/assets/f3.jpg",
+      "qty": 17
+    },
+    {
       "id": "soil4",
       "soil_name": "Peaty Soil",
       "soil_type": "Sphagnum Peat",
@@ -37,9 +41,10 @@
       "characteristics": "High acidity, excellent moisture retention.",
       "good_for": "Suitable for acid-loving plants like blueberries.",
       "price": 45,
-      "img": "./src/assets/f4.jpg"
-  },
-  {
+      "img": "./src/assets/f4.jpg",
+      "qty": 10
+    },
+    {
       "id": "soil5",
       "soil_name": "Chalky Soil",
       "soil_type": "Lime Chalk",
@@ -47,9 +52,10 @@
       "characteristics": "Good drainage, poor nutrient retention.",
       "good_for": "Suitable for plants that prefer alkaline conditions.",
       "price": 55,
-      "img": "./src/assets/f5.jpg"
-  },
-  {
+      "img": "./src/assets/f5.jpg",
+      "qty": 13
+    },
+    {
       "id": "soil6",
       "soil_name": "Silica Soil",
       "soil_type": "Sandy Silica",
@@ -57,9 +63,10 @@
       "characteristics": "Low fertility, excellent drainage.",
       "good_for": "Suitable for succulent plants.",
       "price": 80,
-      "img": "./src/assets/f6.jpg"
-  },
-  {
+      "img": "./src/assets/f6.jpg",
+      "qty": 16
+    },
+    {
       "id": "soil7",
       "soil_name": "Black Soil",
       "soil_type": "Black Clay",
@@ -67,9 +74,10 @@
       "characteristics": "Good fertility, moisture retention.",
       "good_for": "Ideal for a variety of crops.",
       "price": 28,
-      "img": "./src/assets/f7.jpg"
-  },
-  {
+      "img": "./src/assets/f7.jpg",
+      "qty": 7
+    },
+    {
       "id": "soil8",
       "soil_name": "Saline Soil",
       "soil_type": "Salt Pan",
@@ -77,6 +85,8 @@
       "characteristics": "Poor fertility, limited crop suitability.",
       "good_for": "Suitable for salt-tolerant plants.",
       "price": 49,
-      "img": "./src/assets/f8.jpg"
-  }
-]
+      "img": "./src/assets/f8.jpg",
+      "qty": 18
+    }
+  ]
+  

@@ -46,6 +46,10 @@ const setCart = (newCart) => {
   window.localStorage.setItem("cart", JSON.stringify(newCart));
 };
 
+const getLen = () =>{
+  var len = getCart().length ; 
+  return len
+}
 const getTotal = (newCart) => {
   let sum = 0;
   newCart.map((item) => {
@@ -61,4 +65,4 @@ const getQty = (newCart) => {
   });
   return totalqty ;
 }
-export { getEmail, setEmail, getCart, setCart, colorDict , getTotal , getQty};
+export { getEmail, setEmail, getCart, setCart, colorDict , getTotal , getQty , getLen};

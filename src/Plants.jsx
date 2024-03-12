@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-
 import { useState, useEffect } from "react";
 import axios from "axios";
 import {
@@ -8,26 +7,23 @@ import {
   CardContent,
   CardMedia,
   IconButton,
-  Button,
   Box,
   Typography,
 } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from "@mui/icons-material/Remove";
 import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import { yellow } from "@mui/material/colors";
 import MySkeleton from "./MySkeleton";
-import { useAppContext } from "./AppContext";
-import {getCart , setCart} from "./Global";
+import { getCart, setCart  ,getLen } from "./Global";
 
-// let prev = window.localStorage.getItem("cart");
-// let cart = JSON.parse(prev);
+import Snackbar from "@mui/material/Snackbar";
+import Alert from "@mui/material/Alert";
 
-const FlowerList = () => {
+const FlowerList = (props) => {
   const [flowersData, setFlowersData] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const [openSnackbar, setOpenSnackbar] = useState({status : false , statusText : "" , type  :""});
+  
   useEffect(() => {
     const timer = setTimeout(() => {
       axios
@@ -61,48 +57,26 @@ const FlowerList = () => {
                 name={flower.name}
                 care={flower.care}
                 price={flower.price}
+                setOpenSnackbar={setOpenSnackbar}
+                setlen = {props.setlen}
               />
             ))}
       </Grid>
+      <Snackbar
+        open={openSnackbar.status}
+        autoHideDuration={4000}
+        onClose={() => setOpenSnackbar({status : false , statusText : "" , type : ""})}
+      >
+        <Alert severity={openSnackbar.type} variant="filled" sx={{ width: "100%" }} onClose={() => setOpenSnackbar({status : false , statusText : "" , type : ""})}>
+          <b>{openSnackbar.statusText}</b>
+        </Alert>
+      </Snackbar>
     </div>
   );
 };
 
 const MyCard = (props) => {
-  const { update_cart_count } = useAppContext();
-  let [value, setValue] = useState(0);
-  const [Plus, setPlus] = useState(false);
-  const [Cart, setCart] = useState(true);
-
-  const handleCart = () => {
-    if (value > 0) {
-      setCart(false);
-    } else {
-      setCart(true);
-    }
-  };
-
-  const handleIncrement = () => {
-    if (value < 4) {
-      setValue(++value);
-      setPlus(false);
-    } else {
-      setPlus(true);
-    }
-    handleCart();
-  };
-
-  const handleDecrement = () => {
-    if (value == 0) {
-      setPlus(false);
-    }
-    if (value > 0) {
-      setValue(--value);
-      setPlus(false);
-    }
-    handleCart();
-  };
-
+  
   return (
     <Grid item xs={2} sm={4} md={4}>
       <Card sx={{ maxWidth: 300, marginBottom: 2 }}>
@@ -128,16 +102,15 @@ const MyCard = (props) => {
                 borderRadius: 5,
               }}
             >
-              <b>
-                ₹{" "}
-                {value === 0 || value === 1 ? props.price : props.price * value}
-              </b>
+              <b>₹ {props.price}</b>
             </Box>
           </Box>
           <Box
             py={0.5}
             alignItems="center"
             sx={{
+              marginRight: "80px",
+              marginLeft: "80px",
               display: "flex",
               justifyContent: "space-between",
               flexWrap: "wrap",
@@ -145,35 +118,22 @@ const MyCard = (props) => {
           >
             <IconButton
               onClick={() => {
-                update_cart_count();
-                addToCart(props.id, props.price, value, props.image , props.name , props.care);
+                addToCart(
+                  props.id,
+                  props.price,
+                  props.image,
+                  props.name,
+                  props.care,
+                  props.setOpenSnackbar,
+                  props.setlen
+                );
               }}
-              disabled={Cart}
             >
-              <AddShoppingCartOutlinedIcon fontSize="small" />
+              <AddShoppingCartOutlinedIcon fontSize="medium" />
             </IconButton>
-            <Button
-              color="success"
-              onClick={handleIncrement}
-              size="small"
-              variant="outlined"
-              disabled={Plus}
-            >
-              <AddIcon />
-            </Button>
+
             <IconButton>
-              <Typography variant="body1">{value}</Typography>
-            </IconButton>
-            <Button
-              color="error"
-              onClick={handleDecrement}
-              size="small"
-              variant="outlined"
-            >
-              <RemoveIcon />
-            </Button>
-            <IconButton>
-              <FavoriteBorderOutlinedIcon fontSize="small" />
+              <FavoriteBorderOutlinedIcon fontSize="medium" />
             </IconButton>
           </Box>
         </CardContent>
@@ -182,22 +142,25 @@ const MyCard = (props) => {
   );
 };
 
-
-let cart = getCart() ; 
-const addToCart = (id,  price, qty, img , name , care) => {
+const addToCart = (id, price, img, name, care, setOpenSnackbar , setlen) => {
+  let qty = 1;
+  let cart = getCart();
   let itemIndex = cart.findIndex((item) => item.id === id);
   if (itemIndex !== -1) {
-    cart[itemIndex].qty = qty;
+    setOpenSnackbar({status : true , statusText : "Item is already in cart." , type : "warning"});
   } else {
-    cart.push({ id: id, price: price, qty: qty, img: img , name : name , care : care });
+    setOpenSnackbar({status : true , statusText : "Item added in cart." , type : "success"});
+    cart.push({
+      id: id,
+      price: price,
+      qty: qty,
+      img: img,
+      name: name,
+      care: care,
+    });
+    setCart(cart);
+    setlen(getLen())
   }
-  setCart(cart);
-
-  console.log(getCart())
-  // window.localStorage.removeItem("cart");
-  // let items = window.localStorage.getItem("cart");
-  // let temp = JSON.parse(items);
-  // console.log(temp);
 };
 
 export default FlowerList;

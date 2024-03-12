@@ -1,74 +1,87 @@
+/* eslint-disable react/prop-types */
 import { Outlet, Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import { NavDropdown } from "react-bootstrap";
-import logo from "./assets/logo.png";
+import logo from "./assets/logo.png"; // Import the logo image
 import Profile from "@mui/icons-material/AccountCircleRounded";
-import Fav from '@mui/icons-material/Favorite';
-import {useAppContext} from './AppContext';
-import {getEmail } from "./Global";
-import Cart from '@mui/icons-material/AddShoppingCart';
+import Fav from "@mui/icons-material/Favorite";
+import Cart from "@mui/icons-material/AddShoppingCart";
+import Badge from "@mui/material/Badge";
+import IconButton from "@mui/material/IconButton";
 
-const email = getEmail();
+const Navigation = (props) => {
+  const Email = localStorage.getItem("email");
 
-
-const Navigation = () => {
-  const {cart_count} = useAppContext();
   return (
     <>
       <nav
-        className="navbar navbar-expand-lg "
-        style={{ fontSize: 18, backgroundColor: "#93ff82", color: "#000000" }}
+        className="navbar navbar-expand-lg"
+        style={{ fontSize: 18, backgroundColor: "#116530", color: "#FFFFFF" }}
       >
         <div className="container">
           <img
-            src={logo}
+            src={logo} // Use the logo image as the src
             alt="logo"
-            style={{ height: "40px", width: "40px" }}
+            style={{ height: "30px", width: "30px" }}
           />
           <div className="collapse navbar-collapse">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <Link className="nav-link" to="/">
-                  Home
+                  <p>Home</p>
                 </Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/plants">
-                  Plants
+                  <p>Plants</p>
                 </Link>
               </li>
-              <NavDropdown title="Explore More" id="basic-nav-dropdown">
-                <NavDropdown.Item as={Link} to="/pots">
-                  Pots/Planters
-                </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/soil">
-                  Soil/Fertilizers
-                </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/util">
-                  Garden Equipments
-                </NavDropdown.Item>
-              </NavDropdown>
-              {email != null ? (
+              <div>
+                <NavDropdown title="Explore More">
+                  <NavDropdown.Item
+                    as={Link}
+                    to="/pots"
+                    style={{ fontSize: "15px", fontWeight: "bold" }}
+                  >
+                    Pots/Planters
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    as={Link}
+                    to="/soil"
+                    style={{ fontSize: "15px", fontWeight: "bold" }}
+                  >
+                    Soil/Fertilizers
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    as={Link}
+                    to="/util"
+                    style={{ fontSize: "15px", fontWeight: "bold" }}
+                  >
+                    Garden Equipments
+                  </NavDropdown.Item>
+                </NavDropdown>
+              </div>
+              {Email ? (
                 <>
                   <li className="nav-item">
                     <Link className="nav-link" to="/business">
                       Business
                     </Link>
                   </li>
-
                   <li className="nav-item">
                     <Link className="nav-link" to="/cart">
-                        <Cart/>
-                  {cart_count}
+                      <IconButton aria-label="cart">
+                        <Badge color="info" badgeContent={props.len}>
+                          <Cart />
+                        </Badge>
+                      </IconButton>
                     </Link>
                   </li>
-
                   <li className="nav-item">
                     <Link className="nav-link" to="/favorite">
-                        <Fav/>
+                      <Fav />
                     </Link>
                   </li>
-                  
                 </>
               ) : (
                 ""
@@ -79,23 +92,23 @@ const Navigation = () => {
         <div
           style={{ display: "flex", justifyContent: "flex-end", width: "100%" }}
         >
-          {email != null ? (
+          {Email ? (
             <>
               <div style={{ alignItems: "center" }}>
                 <Profile fontSize="large" style={{ marginRight: 5 }} />
-                {email}
+                {Email}
               </div>
               <Button
-                className="mx-3 "
-                variant="outlined"
+                className="mx-2"
+                variant="contained"
                 style={{
-                  backgroundColor: "#93ff82",
-                  color: "#000000",
-                  borderColor: "#000000",
+                  backgroundColor: "#218838",
+                  color: "#ffffff",
                   borderRadius: "20px",
                 }}
                 onClick={() => {
                   localStorage.removeItem("email");
+                  window.location.href = "/home";
                   window.location.reload();
                 }}
               >
@@ -103,22 +116,19 @@ const Navigation = () => {
               </Button>
             </>
           ) : (
-            <>
-              <Link to="/signin">
-                <Button
-                  className="mx-1 "
-                  variant="outlined"
-                  style={{
-                    backgroundColor: "#93ff82",
-                    color: "#000000",
-                    borderColor: "#000000",
-                    borderRadius: "20px",
-                  }}
-                >
-                  Sign In
-                </Button>
-              </Link>
-            </>
+            <Link to="/signin">
+              <Button
+                className="mx-1"
+                variant="contained"
+                style={{
+                  backgroundColor: "#218838",
+                  color: "#ffffff",
+                  borderRadius: "20px",
+                }}
+              >
+                Sign In
+              </Button>
+            </Link>
           )}
         </div>
       </nav>

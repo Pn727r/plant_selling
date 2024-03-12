@@ -1,66 +1,76 @@
+
 [
-  {
+    {
       "id": "util1",
       "name": "Pruning Shears",
       "description": "Pruning shears are used for cutting and shaping plants, especially for removing small branches or dead foliage.",
       "usage": "Trimming and shaping plants",
       "img": "/src/assets/util1.jpeg",
-      "price": 500
-  },
-  {
+      "price": 500,
+      "qty": 15
+    },
+    {
       "id": "util2",
       "name": "Hoe",
       "description": "A hoe is a versatile tool used for digging, cultivating, and weeding in the garden.",
       "usage": "Breaking up soil, weeding",
       "img": "/src/assets/util2.jpg",
-      "price": 700
-  },
-  {
+      "price": 700,
+      "qty": 10
+    },
+    {
       "id": "util3",
       "name": "Garden Trowel",
       "description": "A garden trowel is a small hand tool with a pointed, scoop-shaped metal blade.",
       "usage": "Planting, transplanting, weeding",
       "img": "/src/assets/util3.jpg",
-      "price": 300
-  },
-  {
+      "price": 300,
+      "qty": 18
+    },
+    {
       "id": "util4",
       "name": "Watering Can",
       "description": "A watering can is a container with a spout used to water plants. It is a common tool for providing a controlled flow of water to the soil.",
       "usage": "Watering plants",
       "img": "/src/assets/util4.jpg",
-      "price": 250
-  },
-  {
+      "price": 250,
+      "qty": 7
+    },
+    {
       "id": "util5",
       "name": "Garden Gloves",
       "description": "Garden gloves are worn to protect hands from dirt, thorns, and other potential hazards while gardening.",
       "usage": "Hand protection while gardening",
       "img": "/src/assets/util5.jpg",
-      "price": 150
-  },
-  {
+      "price": 150,
+      "qty": 14
+    },
+    {
       "id": "util6",
       "name": "Wheelbarrow",
       "description": "A wheelbarrow is a small, one-wheeled cart designed for carrying materials, such as soil, plants, or gardening tools.",
       "usage": "Transporting materials in the garden",
       "img": "/src/assets/util6.jpg",
-      "price": 1200
-  },
-  {
+      "price": 1200,
+      "qty": 11
+    },
+    {
       "id": "util7",
       "name": "Rake",
       "description": "A rake is a tool with a row of metal or wooden teeth used for collecting leaves, grass, or other debris in the garden.",
       "usage": "Clearing debris, leveling soil",
       "img": "/src/assets/util7.jpg",
-      "price": 180
-  },
-  {
+      "price": 180,
+      "qty": 9
+    },
+    {
       "id": "util8",
       "name": "Garden Fork",
       "description": "A garden fork is a digging tool with sharp, pointed prongs used for turning and loosening soil.",
       "usage": "Turning and aerating soil",
       "img": "/src/assets/util8.jpg",
-      "price": 350
-  }
-]
+      "price": 350,
+      "qty": 20
+    }
+  ]
+  

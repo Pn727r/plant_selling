@@ -1,175 +1,294 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import Message from "./Messages";
+// import Message from "./Messages";
+import axios from "axios";
+
 function ProductSellingForm() {
+  const [File, setFile] = useState(null);
   const [Ctgr, setCtgr] = useState("");
-  const [errors, seterrors] = useState({
-    name: "",
-    number: "",
-    amount: "",
-    qty: "",
-    image: "",
+  // const [errors, seterrors] = useState({
+  //   name: "",
+  //   number: "",
+  //   amount: "",
+  //   qty: "",
 
-    plant_name: "",
-    plant_care: "",
+  //   plant_name: "",
+  //   plant_care: "",
 
-    soil_name: "",
-    soil_type: "",
-    description: "",
-    characteristics: "",
-    good_for: "",
+  //   soil_name: "",
+  //   soil_type: "",
+  //   description: "",
+  //   characteristics: "",
+  //   good_for: "",
 
-    category: "",
-    pot_color: ["Brown"],
-    pot_type: "",
+  //   category: "",
+  //   pot_color: ["Brown"],
+  //   pot_type: "",
 
-    util_name: "",
-    util_description: "",
-    usage: "",
-  });
+  //   util_name: "",
+  //   util_description: "",
+  //   usage: "",
+  // });
 
-  const [formData, setformData] = useState({
-    name: "",
-    number: "",
-    amount: "",
-    qty: "",
-    image: "",
+  // const [formData, setformData] = useState({
+  //   name: "",
+  //   number: "",
+  //   amount: "",
+  //   qty: "",
 
-    plant_name: "",
-    plant_care: "",
+  //   plant_name: "",
+  //   plant_care: "",
 
-    soil_name: "",
-    soil_type: "",
-    description: "",
-    characteristics: "",
-    good_for: "",
+  //   soil_name: "",
+  //   soil_type: "",
+  //   description: "",
+  //   characteristics: "",
+  //   good_for: "",
 
-    category: "",
-    pot_color: ["Brown"],
-    pot_type: "",
+  //   category: "",
+  //   pot_color: ["Brown"],
+  //   pot_type: "",
 
-    util_name: "",
-    util_description: "",
-    usage: "",
-  });
+  //   image: "",
+  //   util_name: "",
+  //   util_description: "",
+  //   usage: "",
+  // });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const errors = validation();
-    seterrors(errors);
+  const handleSubmit = () => {
+   
+    // const {
+    //   name,
+    //   number,
+    //   amount,
+    //   qty,
+    //   plant_name,
+    //   plant_care,
+    //   soil_name,
+    //   soil_type,
+    //   description,
+    //   characteristics,
+    //   good_for,
+    //   category,
+    //   pot_color,
+    //   pot_type,
+    //   util_name,
+    //   util_description,
+    //   usage,
+    // } = formData;
+    // let isPlants = true;
+    // let isPots = true;
+    // let isSoil = true;
+    // let isUtils = true;
+
+    // e.preventDefault();
+
+    // if (Ctgr == "Plants") {
+    //   axios
+    //     .post("http://localhost:3000/upload_image", fileData)
+    //     .then((res) => {
+    //       console.log(res);
+    //     })
+    //     .catch((er) => {
+    //       console.log(er);
+    //     });
+
+    //   axios
+    //     .post("http://localhost:3000/upload", {
+    //       name,
+    //       number,
+    //       amount,
+    //       qty,
+    //       plant_care,
+    //       plant_name,
+    //       isPlants,
+    //     })
+    //     .then((res) => {
+    //       console.log(res.data);
+    //     });
+    // }
+    // if (Ctgr == "Pots") {
+    //   axios
+    //     .post("http://localhost:3000/upload", {
+    //       name,
+    //       number,
+    //       amount,
+    //       qty,
+    //       category,
+    //       pot_color,
+    //       pot_type,
+    //       isPots,
+    //     })
+    //     .then((res) => {
+    //       console.log(res.data);
+    //     });
+    // }
+    // if (Ctgr == "Soil") {
+    //   axios
+    //     .post("http://localhost:3000/upload", {
+    //       name,
+    //       number,
+    //       amount,
+    //       qty,
+    //       soil_name,
+    //       soil_type,
+    //       description,
+    //       characteristics,
+    //       good_for,
+    //       isSoil,
+    //     })
+    //     .then((res) => {
+    //       console.log(res.data);
+    //     });
+    // }
+    // if (Ctgr == "Utils") {
+    //   axios
+    //     .post("http://localhost:3000/upload", {
+    //       name,
+    //       number,
+    //       amount,
+    //       qty,
+    //       util_name,
+    //       util_description,
+    //       usage,
+    //       isUtils,
+    //     })
+    //     .then((res) => {
+    //       console.log(res.data);
+    //     });
+    // }
+
+    // const errors = validation();
+    // seterrors(errors);
 
     console.log("Form submitted:", formData);
   };
 
-  const validation = () => {
-    const error = {};
+  // const validation = () => {
+  //   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  //   const error = {};
 
-    if (!formData.name || formData.name == "") {
-      error.name = "Name can't be blank";
-    } else {
-      error.name = "";
-    }
+  //   if (!formData.name || formData.name == "" || regex.test(formData.name)) {
+  //     error.name = "Email valid email";
+  //   } else {
+  //     error.name = "";
+  //   }
 
-    if (!formData.number || formData.number == "") {
-      error.number = "Last name can't be blank";
-    } else if (formData.number.length != 10) {
-      error.number = "10 Digit Mobile number only";
-    } else {
-      error.number = "";
-    }
+  //   if (!formData.number || formData.number == "") {
+  //     error.number = "Last name can't be blank";
+  //   } else if (formData.number.length != 10) {
+  //     error.number = "10 Digit Mobile number only";
+  //   } else {
+  //     error.number = "";
+  //   }
 
-    if (!formData.amount || formData.amount == "") {
-      error.amount = "Amount can't be blank";
-    } else {
-      error.amount = "";
-    }
+  //   if (!formData.amount || formData.amount == "") {
+  //     error.amount = "Amount can't be blank";
+  //   } else {
+  //     error.amount = "";
+  //   }
 
-    if (!formData.qty || formData.qty == "") {
-      error.qty = "Quantity can't be blank";
-    } else {
-      error.qty = "";
-    }
+  //   if (!formData.qty || formData.qty == "") {
+  //     error.qty = "Quantity can't be blank";
+  //   } else {
+  //     error.qty = "";
+  //   }
 
-    if (!formData.image || formData.image == "") {
-      error.image = "Upload image";
-    } else {
-      error.image = "";
-    }
+  //   if (!formData.image || formData.image == "") {
+  //     error.image = "Upload image";
+  //   } else {
+  //     error.image = "";
+  //   }
 
-    if (!formData.plant_name || formData.plant_name == "") {
-      error.plant_name = "Plant name can't be blank";
-    } else {
-      error.plant_name = "";
-    }
+  //   if (!formData.plant_name || formData.plant_name == "") {
+  //     error.plant_name = "Plant name can't be blank";
+  //   } else {
+  //     error.plant_name = "";
+  //   }
 
-    if (!formData.plant_care || formData.plant_care == "") {
-      error.plant_care = "Plant care can't be blank";
-    } else {
-      error.plant_care = "";
-    }
+  //   if (!formData.plant_care || formData.plant_care == "") {
+  //     error.plant_care = "Plant care can't be blank";
+  //   } else {
+  //     error.plant_care = "";
+  //   }
 
-    if (!formData.soil_name || formData.soil_name == "") {
-      error.soil_name = "Soil name can't be blank";
-    } else {
-      error.soil_name = "";
-    }
+  //   if (!formData.soil_name || formData.soil_name == "") {
+  //     error.soil_name = "Soil name can't be blank";
+  //   } else {
+  //     error.soil_name = "";
+  //   }
 
-    if (!formData.soil_type || formData.soil_type == "") {
-      error.soil_type = "Soil type can't be blank";
-    } else {
-      error.soil_type = "";
-    }
+  //   if (!formData.soil_type || formData.soil_type == "") {
+  //     error.soil_type = "Soil type can't be blank";
+  //   } else {
+  //     error.soil_type = "";
+  //   }
 
-    if (!formData.description || formData.description == "") {
-      error.description = "Soil description can't be blank";
-    } else {
-      error.description = "";
-    }
+  //   if (!formData.description || formData.description == "") {
+  //     error.description = "Soil description can't be blank";
+  //   } else {
+  //     error.description = "";
+  //   }
 
-    if (!formData.good_for || formData.good_for == "") {
-      error.good_for = "Goods for field can't be blank";
-    } else {
-      error.good_for = "";
-    }
+  //   if (!formData.good_for || formData.good_for == "") {
+  //     error.good_for = "Goods for field can't be blank";
+  //   } else {
+  //     error.good_for = "";
+  //   }
 
-    if (!formData.category || formData.category == "") {
-      error.category = "Please select Category";
-    } else {
-      error.category = "";
-    }
+  //   if (!formData.category || formData.category == "") {
+  //     error.category = "Please select Category";
+  //   } else {
+  //     error.category = "";
+  //   }
 
-    if (formData.pot_color.length == 0) {
-      error.pot_color = "Please select pot colors";
-    } else {
-      error.pot_color = "";
-    }
+  //   if (formData.pot_color.length == 0) {
+  //     error.pot_color = "Please select pot colors";
+  //   } else {
+  //     error.pot_color = "";
+  //   }
 
-    if (!formData.pot_type || formData.pot_type == "") {
-      error.pot_type = "Please select pot type";
-    } else {
-      error.pot_type = "";
-    }
+  //   if (!formData.pot_type || formData.pot_type == "") {
+  //     error.pot_type = "Please select pot type";
+  //   } else {
+  //     error.pot_type = "";
+  //   }
 
-    if (!formData.util_name || formData.util_name == "") {
-      error.util_name = "Util name can't be blank";
-    } else {
-      error.util_name = "";
-    }
+  //   if (!formData.util_name || formData.util_name == "") {
+  //     error.util_name = "Util name can't be blank";
+  //   } else {
+  //     error.util_name = "";
+  //   }
 
-    if (!formData.util_description || formData.util_description == "") {
-      error.util_description = "Utility description can't be blank";
-    } else {
-      error.util_description = "";
-    }
+  //   if (!formData.util_description || formData.util_description == "") {
+  //     error.util_description = "Utility description can't be blank";
+  //   } else {
+  //     error.util_description = "";
+  //   }
 
-    if (!formData.usage || formData.usage == "") {
-      error.usage = "Utility usage can't be blank";
-    } else {
-      error.usage = "";
-    }
+  //   if (!formData.usage || formData.usage == "") {
+  //     error.usage = "Utility usage can't be blank";
+  //   } else {
+  //     error.usage = "";
+  //   }
 
-    return error;
-  };
+  //   return error;
+  // };
+
+  const upload_file = () => {
+    const formData= new FormData();
+    formData.append("file", File);
+    
+    axios
+        .post("http://localhost:3000/upload_image", formData)
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((er) => {
+          console.log(er);
+        });
+  }
+
   return (
     <div className="container">
       <h2 className="mb-4" style={{ textAlign: "center", marginTop: "10px" }}>
@@ -182,8 +301,8 @@ function ProductSellingForm() {
           alignContent: "center",
         }}
       >
-        <form style={{ width: "60%" }} onSubmit={handleSubmit}>
-          {errors.name ? (
+        <form style={{ width: "60%" }} method="post" onSubmit={handleSubmit}>
+          {/* {errors.name ? (
             <Message msg={errors.name} msg_type="error" />
           ) : errors.number ? (
             <Message msg={errors.number} msg_type="error" />
@@ -202,7 +321,7 @@ function ProductSellingForm() {
           ) : Ctgr == "Pots" ? (
             errors.pot_type ? (
               <Message msg={errors.pot_type} msg_type="error" />
-            ) : errors.pot_color.length ==0 ? (
+            ) : errors.pot_color.length == 0 ? (
               <Message msg={errors.pot_color} msg_type="error" />
             ) : errors.category ? (
               <Message msg={errors.category} msg_type="error" />
@@ -239,15 +358,15 @@ function ProductSellingForm() {
             )
           ) : (
             ""
-          )}
+          )} */}
           <div className="form-group my-2">
-            <label htmlFor="name">Name:</label>
+            <label htmlFor="name">Email :</label>
             <input
               type="text"
               className="form-control"
               name="name"
               id="name"
-              placeholder="Enter your name"
+              placeholder="Enter your email"
               onChange={(e) => {
                 setformData((data) => ({
                   ...data,
@@ -302,6 +421,17 @@ function ProductSellingForm() {
                   ...data,
                   [e.target.name]: e.target.value,
                 }));
+              }}
+            />
+          </div>
+
+          <div className="form-group my-2">
+            <input
+              type="file"
+              id="imageInput"
+              name="imageInput"
+              onChange={(e) => {
+                setFile(e.target.files[0]);
               }}
             />
           </div>
@@ -433,7 +563,6 @@ const Pots = (props) => {
       clr.push(value);
       console.log(clr);
     }
-    
   };
 
   return (
@@ -489,7 +618,9 @@ const Pots = (props) => {
       <div className="form-group my-2">
         <label htmlFor="color">Color:</label>
 
-        <label htmlFor="color" className="mx-2">Red :</label>
+        <label htmlFor="color" className="mx-2">
+          Red :
+        </label>
         <input
           className="form-check-input"
           type="checkbox"
@@ -502,7 +633,9 @@ const Pots = (props) => {
           }}
         />
 
-        <label htmlFor="color" className="mx-2">Blue :</label>
+        <label htmlFor="color" className="mx-2">
+          Blue :
+        </label>
         <input
           className="form-check-input"
           type="checkbox"
@@ -515,7 +648,9 @@ const Pots = (props) => {
           }}
         />
 
-        <label htmlFor="color" className="mx-2">Green :</label>
+        <label htmlFor="color" className="mx-2">
+          Green :
+        </label>
         <input
           className="form-check-input"
           type="checkbox"

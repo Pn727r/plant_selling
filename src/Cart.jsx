@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { getCart, setCart, getTotal, getQty } from "./Global";
+import { getCart, setCart, getTotal, getQty , getLen} from "./Global";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import { Button } from "@mui/material";
@@ -12,21 +12,19 @@ import { useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import EmptyCart from "./EmptyCart";
-import { flowerContent, potsContent } from "./CartContent";
+import Gpay from "./Payment";
 
-const MyCart = () => {
-  const prev = getCart();
-  const [cart, setLocalCart] = useState(prev);
+import {
+  flowerContent,
+  potsContent,
+  utilContent,
+  soilContent,
+} from "./CartContent";
+
+const MyCart = (props) => {
+  const [cart, setLocalCart] = useState(getCart());
   const [quantity, setQuantity] = useState(getQty(cart));
   const [total, setTotal] = useState(getTotal(cart));
-  const handleDelete = (id) => {
-    const updatedCart = cart.filter((item) => item.id !== id);
-    setCart(updatedCart);
-    setLocalCart(updatedCart);
-    setTotal(getTotal(updatedCart));
-    setQuantity(getQty(updatedCart));
-    console.log(getCart());
-  };
 
   return (
     <>
@@ -45,90 +43,135 @@ const MyCart = () => {
             category={item.category}
             type={item.type}
             color={item.color}
-            handleDelete={handleDelete}
+            soil_name={item.soil_name}
+            soil_type={item.soil_type}
+            util_name={item.name}
+            util_usage={item.usage}
+            cart={cart}
+            setLocalCart={setLocalCart}
             setTotal={setTotal}
             setQuantity={setQuantity}
+            setlen={props.setlen}
           />
         ))
       )}
-
-      <div
-        className="container my-3"
-        style={{
-          display: "flex",
-          "align-items": "center",
-          "justify-content": "flex-end",
-        }}
-      >
-        <Typography component="div" variant="h6">
-          Total Quantity : 
-        </Typography>
-        <Box
-          sx={{
+      {cart.length != 0 ? (
+        <div
+          className="container my-3"
+          style={{
             display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            width: 45,
-            backgroundColor: "#93ff82",
-            height: 35,
-            borderRadius: 5,
-            marginLeft: 2,
-            marginRight: "100px",
+            "align-items": "center",
+            "justify-content": "flex-end",
           }}
         >
-          <Typography variant="h6">{quantity}</Typography>
-        </Box>
+          <Typography component="div" variant="h6">
+            Total Quantity :
+          </Typography>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              width: 45,
+              backgroundColor: "#93ff82",
+              height: 35,
+              borderRadius: 5,
+              marginLeft: 2,
+              marginRight: "100px",
+            }}
+          >
+            <Typography variant="h6">{quantity}</Typography>
+          </Box>
 
-        <Typography component="div" variant="h6">
-          Total Amount : 
-        </Typography>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            width: 120,
-            backgroundColor: "#93ff82",
-            height: 35,
-            borderRadius: 5,
-            marginLeft: 2,
-            marginRight: "25px",
-          }}
-        >
-          <Typography variant="h6">₹ {total}</Typography>
-        </Box>
-      </div>
+          <Typography component="div" variant="h6">
+            Total Amount :
+          </Typography>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              width: 120,
+              backgroundColor: "#93ff82",
+              height: 35,
+              borderRadius: 5,
+              marginLeft: 2,
+              marginRight: "25px",
+            }}
+          >
+            <Typography variant="h6">₹ {total}</Typography>
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              width: 120,
+              backgroundColor: "#93ff82",
+              height: 35,
+              borderRadius: 5,
+              marginLeft: 45,
+              marginRight: "25px",
+            }}
+          >
+            <Gpay total={total} />
+          </Box>
+        </div>
+      ) : (
+        ""
+      )}
     </>
   );
 };
 
-let tempcart = getCart();
 const MyCard = (props) => {
-  let [value, setValue] = useState(props.qty);
-  const itemToChange = tempcart.find((item) => item.id === props.id);
 
+  const index = props.cart.findIndex((item) => item.id === props.id);
   const handleIncrement = () => {
-    if (value < 4) {
-      setValue(++value);
-      itemToChange.qty = value;
-      setCart(tempcart);
-      props.setTotal(getTotal(tempcart));
-      props.setQuantity(getQty(tempcart));
+    if (props.cart[index].qty < 4) {
+
+      if (index !== -1) {
+        props.cart[index].qty += 1 ;
+        console.log(props.cart[index].qty) ; 
+      }
+      setCart(props.cart);
+      props.setLocalCart(getCart());
+      props.setTotal(getTotal(props.cart));
+      props.setQuantity(getQty(props.cart));
       console.log(getCart());
     }
   };
 
   const handleDecrement = () => {
-    if (value > 1) {
-      setValue(--value);
-      itemToChange.qty = value;
-      setCart(tempcart);
-      props.setTotal(getTotal(tempcart));
-      props.setQuantity(getQty(tempcart));
+    if (props.cart[index].qty >1) {
+
+      if (index !== -1) {
+        props.cart[index].qty -= 1 ;
+        console.log(props.cart[index].qty) ; 
+      }
+      setCart(props.cart);
+      props.setLocalCart(getCart());
+      props.setTotal(getTotal(props.cart));
+      props.setQuantity(getQty(props.cart));
       console.log(getCart());
     }
   };
 
+  const handleDelete = () => {
+    const updatedCart = props.cart.filter((item) => item.id !== props.id);
+    console.log(updatedCart);
+    setCart(updatedCart);
+
+    props.setLocalCart(updatedCart);
+    props.setTotal(getTotal(updatedCart));
+    props.setQuantity(getQty(updatedCart));
+    props.setlen(getLen())
+    // setCart()
+    // setLocalCart(updatedCart);
+    // setTotal(getTotal(updatedCart));
+    // setQuantity(getQty(updatedCart));
+
+  };
   return (
     <>
       <Card
@@ -149,15 +192,18 @@ const MyCard = (props) => {
           alt="Live from space album cover"
         />
         <Box sx={{ display: "flex", flexDirection: "column", width: "100%" }}>
-          {
-            props.id.startsWith("flower")
-              ? flowerContent(props.name, props.care)
-              : props.id.startsWith("pots")
-              ? potsContent(props.category, props.color, props.type)
-              : ""
-            // props.id.startWith("soil") ? soilContent() :
-            // props.id.startWith("util") ? utilContent() : ""
-          }
+          {props.id.startsWith("flower")
+            ? flowerContent(props.name, props.care)
+            : ""}
+          {props.id.startsWith("pots")
+            ? potsContent(props.category, props.color, props.type)
+            : ""}
+          {props.id.startsWith("soil")
+            ? soilContent(props.soil_name, props.soil_type)
+            : ""}
+          {props.id.startsWith("util")
+            ? utilContent(props.util_name, props.util_usage)
+            : ""}
 
           <Box
             py={1}
@@ -176,7 +222,7 @@ const MyCard = (props) => {
               <AddIcon />
             </Button>
             <IconButton style={{ height: 25 }}>
-              <Typography variant="body1">{value}</Typography>
+              <Typography variant="body1">{props.cart[index].qty}</Typography>
             </IconButton>
             <Button
               style={{ width: 65, height: 25 }}
@@ -197,11 +243,11 @@ const MyCard = (props) => {
                 marginLeft: 2,
               }}
             >
-              <b>₹ {props.price * value}</b>
+              <b>₹ {props.price * props.cart[index].qty}</b>
             </Box>
             <IconButton
               onClick={() => {
-                props.handleDelete(props.id);
+                handleDelete();
               }}
               style={{
                 borderRadius: 15,
